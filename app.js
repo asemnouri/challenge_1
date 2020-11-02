@@ -3,8 +3,8 @@ let button = document.getElementById('myButton')
 let player = document.getElementById('player')
 
 let currentPlayer = 'playerX'
-let playerXArray=[]
-let playerOArray=[]
+let playerXArray = []
+let playerOArray = []
 const possibilities = [
     [0, 1, 2],
     [3, 4, 5],
@@ -14,7 +14,7 @@ const possibilities = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-  ]
+]
 allElements.forEach(element => {
     element.addEventListener('click', clickMe)
 })
@@ -45,18 +45,27 @@ function clickMe(e) {
             player.innerHTML = "player X turn now"
             playerOArray.push(index)
         }
-        for(let i=0;i<possibilities.length;i++){
-            if(playerOArray.includes(possibilities[i][0])&&playerOArray.includes(possibilities[i][1])&&playerOArray.includes(possibilities[i][2])){
-                player.innerHTML = "player O won the game"
-            }else if(playerXArray.includes(possibilities[i][0])&&playerXArray.includes(possibilities[i][1])&&playerXArray.includes(possibilities[i][2])){
-                player.innerHTML = "player X won the game"
+        for (let i = 0; i < possibilities.length; i++) {
+            if (playerOArray.includes(possibilities[i][0]) && playerOArray.includes(possibilities[i][1]) && playerOArray.includes(possibilities[i][2])) {
+                player.innerHTML = "PLYER O WON THE GAME"
+
+            } else if (playerXArray.includes(possibilities[i][0]) && playerXArray.includes(possibilities[i][1]) && playerXArray.includes(possibilities[i][2])) {
+                player.innerHTML = "PLYER X WON THE GAME"
+
+            }
+            
+            
+            if(playerOArray.length+ playerXArray.length === 9){
+                player.innerHTML = "IT IS A TIE!"
             }
         }
     }
 
 }
 
-button.addEventListener('click', (e) => {
+button.addEventListener('click', clear)
+
+function clear() {
     allElements.forEach(element => {
         if (element.classList.contains('playerO')) {
             element.classList.remove("playerO");
@@ -65,5 +74,10 @@ button.addEventListener('click', (e) => {
             element.classList.remove("playerX");
         }
     })
-})
+    playerOArray = []
+    playerXArray = []
+    player.innerHTML = "player X turn now"
+}
+
+
 
