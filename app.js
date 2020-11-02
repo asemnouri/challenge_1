@@ -47,17 +47,20 @@ function clickMe(e) {
         }
         for (let i = 0; i < possibilities.length; i++) {
             if (playerOArray.includes(possibilities[i][0]) && playerOArray.includes(possibilities[i][1]) && playerOArray.includes(possibilities[i][2])) {
+                if(player.innerHTML != "PLYER X WON THE GAME")
                 player.innerHTML = "PLYER O WON THE GAME"
+                
 
             } else if (playerXArray.includes(possibilities[i][0]) && playerXArray.includes(possibilities[i][1]) && playerXArray.includes(possibilities[i][2])) {
+                if(player.innerHTML != "PLYER O WON THE GAME")
                 player.innerHTML = "PLYER X WON THE GAME"
-
+                
             }
-            
-            
-            if(playerOArray.length+ playerXArray.length === 9){
+            if (playerOArray.length + playerXArray.length === 9 &&player.innerHTML != "PLYER O WON THE GAME" &&player.innerHTML != "PLYER X WON THE GAME") {
                 player.innerHTML = "IT IS A TIE!"
+                clear()
             }
+
         }
     }
 
